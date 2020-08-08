@@ -10,9 +10,9 @@
         <th>Reported By</th>
         <th>Status</th>
         <th>Last Modified</th>
-        <bug v-for="bugItem in bugs" :bug="bugItem" :key="bugItem.id"></bug>
       </tr>
     </table>
+    <bug v-for="bugItem in bugs" :bug="bugItem" :key="bugItem.id"></bug>
   </div>
 </template>
 
@@ -20,33 +20,23 @@
 import Bug from "../components/Bug";
 export default {
   name: "home",
-  props: ["bug", "profile"],
+  props: ["bug"],
   data() {
-    return {
-      newBug: {},
-    };
+    return {};
   },
   mounted() {
     this.$store.dispatch("getBugs");
-    this.$store.dispatch("getProfile");
+    // this.$store.dispatch("getProfile");
   },
   computed: {
     bugs() {
       return this.$store.state.bugs;
     },
-    prof() {
-      return this.$store.state.profile;
-    },
+    // prof() {
+    //   return this.$store.state.profile;
+    //   },
   },
-  methods: {
-    addBug() {
-      this.$store.dispatch("addBug", {
-        title: this.newBug.title,
-        description: this.newBug.description,
-      });
-      console.log(this.newBug.title, this.newBug.description);
-    },
-  },
+  methods: {},
   components: {
     Bug,
   },

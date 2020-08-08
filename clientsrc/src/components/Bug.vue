@@ -1,32 +1,27 @@
 <template>
-  <div class="Bug">
-    <div class="bg-light text-success border rounded p-3">
-      <div class="row justify-content-between ml-2 mt-1 mr-3">
-        <tr>
-          <router-link :to="{name: 'Bug', params: {id: bugData._id}}">
-            <td>{{bug.title}}</td>
-          </router-link>
-          <td>{{prof.name}}</td>
-          <td>{{bug.closed}}</td>
-          <td>{{bug.updatedAt}}</td>
-        </tr>
-      </div>
-    </div>
-  </div>
+  <div class="Bug">{{prof.name}}{{bug.title}}</div>
 </template>
 
 
 <script>
 export default {
   name: "Bug",
-  props: [],
+  props: ["prof", "bug"],
   data() {
-    return {
-      newBug: {},
-    };
+    return {};
   },
-  mounted() {},
-  computed: {},
+  mounted() {
+    //  this.$store.dispatch("getBugs");
+    this.$store.dispatch("getProfile");
+  },
+  computed: {
+    //   bugs() {
+    //     return this.$store.state.bugs;
+    //   },
+    prof() {
+      return this.$store.state.profile;
+    },
+  },
   methods: {},
   components: {},
 };

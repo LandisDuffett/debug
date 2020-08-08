@@ -5,7 +5,7 @@ import { api } from "./AxiosService"
 
 Vue.use(Vuex);
 
-
+let base = window.location.host.includes('localhost') ? '//localhost:3000/' : '/'
 
 export default new Vuex.Store({
   state: {
@@ -38,7 +38,7 @@ export default new Vuex.Store({
     },
     async getBugs({ commit }) {
       try {
-        let res = await api.get('bugs')
+        let res = await api.get("bugs")
         commit("setBugs", res.data)
       } catch (error) {
         console.error(error)
