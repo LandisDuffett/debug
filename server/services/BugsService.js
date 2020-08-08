@@ -30,13 +30,14 @@ class BugsService {
         }
         return data
     }
-    /* async getNotesByBugId(id) {
-         let data = await dbContext.Bugs.find({ bugId: id });
-         if (!data) {
-             throw new BadRequest("Invalid ID or you do not own this bug.")
-         }
-         return data;
-     }*/
+    async getNotesByBugId(id) {
+        let data = await dbContext.Notes.find({ bugId: id });
+        if (!data) {
+            throw new BadRequest("Invalid ID or you do not own this bug.")
+        }
+        return data;
+    }
+
     async editBug(id, userEmail, update) {
         let data = await dbContext.Bugs.findOneAndUpdate({ _id: id, creatorEmail: userEmail }, update, { new: true })
         if (!data) {
