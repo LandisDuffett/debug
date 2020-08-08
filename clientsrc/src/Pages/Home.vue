@@ -11,8 +11,8 @@
         <th>Status</th>
         <th>Last Modified</th>
       </tr>
+      <bug v-for="bugItem in bugs" :bug="bugItem" :key="bugItem.id"></bug>
     </table>
-    <bug v-for="bugItem in bugs" :bug="bugItem" :key="bugItem.id"></bug>
   </div>
 </template>
 

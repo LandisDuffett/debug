@@ -1,5 +1,10 @@
 <template>
-  <div class="Bug">{{prof.name}}{{bug.title}}</div>
+  <tr class="Bug">
+    <td>{{bug.title}}</td>
+    <td>{{prof.name}}</td>
+    <td>{{bug.closed}}</td>
+    <td>{{bug.updatedAt}}</td>
+  </tr>
 </template>
 
 
