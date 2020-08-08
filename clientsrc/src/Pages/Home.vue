@@ -20,7 +20,7 @@
 import Bug from "../components/Bug";
 export default {
   name: "home",
-  props: ["bug"],
+  props: ["bug", "prof"],
   data() {
     return {};
   },
