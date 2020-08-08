@@ -20,6 +20,12 @@ const routes = [
     component: Profile,
     beforeEnter: authGuard,
   },
+  //  {
+  //path: "/bugs/:id",
+  //name: 'Bug',
+  //component: () => import(/* webpackChunkName: "detbugview" */ '../pages/DetBugView.vue'),
+  //beforeEnter: authGuard,
+  //  }
 ];
 
 const router = new VueRouter({
