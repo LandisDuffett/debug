@@ -1,7 +1,11 @@
 <template>
   <h3>
-    {{bug.title}}
+    <router-link :to="{name: 'BugDetails', params: {bugId: bug.id}}">
+      <h3>{{bug.title}}</h3>
+    </router-link>
     <profile :profile="profile"></profile>
+    {{bug.closed}}
+    {{bug.updatedAt}}
   </h3>
 </template>
 

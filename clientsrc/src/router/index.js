@@ -5,6 +5,7 @@ import Home from "../Pages/Home.vue";
 // @ts-ignore
 import Profile from "../Pages/Profile.vue";
 import { authGuard } from "@bcwdev/auth0-vue";
+import BugDetails from "../Pages/BugDetails.vue"
 
 Vue.use(VueRouter);
 
@@ -21,12 +22,12 @@ const routes = [
     component: Profile,
     beforeEnter: authGuard,
   },
-  //  {
-  //path: "/bugs/:id",
-  //name: 'Bug',
-  //component: () => import(/* webpackChunkName: "detbugview" */ '../pages/DetBugView.vue'),
-  //beforeEnter: authGuard,
-  //  }
+  {
+    path: "/bugdetails/:bugId",
+    name: "BugDetails",
+    props: true,
+    component: BugDetails,
+  }
 ];
 
 const router = new VueRouter({
