@@ -4,7 +4,7 @@
       <h3>{{bug.title}}</h3>
     </router-link>
     <profile :profile="profile"></profile>
-    {{bug.closed}}
+    <h5 :class="colorClass">{{bug.closed}}</h5>
     {{convertDate}}
   </h3>
 </template>
@@ -15,7 +15,9 @@ export default {
   name: "Bug",
   props: ["bug"],
   data() {
-    return {};
+    return {
+      isActive: true,
+    };
   },
   mounted() {
     this.$store.dispatch("getProfile");
@@ -32,6 +34,11 @@ export default {
       newnewDate = newnewDate.join("-");
       return newnewDate;
     },
+    colorClass() {
+      return {
+        "text-danger": this.isActive && this.bug.closed,
+      };
+    },
   },
   methods: {},
   components: {
@@ -41,5 +48,5 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 </style>
