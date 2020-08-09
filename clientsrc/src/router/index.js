@@ -13,6 +13,7 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+    beforeEnter: authGuard,
   },
   {
     path: "/profile",

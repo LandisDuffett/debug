@@ -1,31 +1,30 @@
 <template>
-  <tr class="Bug">
-    <td>{{prof.name}}</td>
-  </tr>
+  <h3>
+    {{bug.title}}
+    <profile :profile="profile"></profile>
+  </h3>
 </template>
 
-
 <script>
+import Profile from "../components/Prof.vue";
 export default {
   name: "Bug",
-  props: ["prof"],
+  props: ["bug"],
   data() {
     return {};
   },
   mounted() {
-    //  this.$store.dispatch("getBugs");
     this.$store.dispatch("getProfile");
   },
   computed: {
-    //  bugs() {
-    //    return this.$store.state.bugs;
-    //  },
-    prof() {
+    profile() {
       return this.$store.state.profile;
     },
   },
   methods: {},
-  components: {},
+  components: {
+    Profile,
+  },
 };
 </script>
 

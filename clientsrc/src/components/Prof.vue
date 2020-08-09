@@ -1,15 +1,11 @@
 <template>
-  <tr class="Note">
-    <td>{{note.creatorEmail}}</td>
-    <td>{{note.content}}</td>
-  </tr>
+  <h3>{{profile.name}}</h3>
 </template>
-
 
 <script>
 export default {
-  name: "Note",
-  props: ["note"],
+  name: "Profile",
+  props: ["profile"],
   data() {
     return {};
   },
