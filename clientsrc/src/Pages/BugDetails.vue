@@ -1,5 +1,5 @@
 <template>
-  <h5>Yeah!{{bugId}}</h5>
+  <h5>Yeah!{{bug.title}}</h5>
 </template>
 
 <script>
@@ -9,8 +9,14 @@ export default {
   data() {
     return {};
   },
-  mounted() {},
-  computed: {},
+  mounted() {
+    this.$store.dispatch("getById", this.$route.params.bugId);
+  },
+  computed: {
+    bug() {
+      return this.$store.state.activeBug;
+    },
+  },
   methods: {},
   components: {},
 };
