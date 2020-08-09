@@ -27,6 +27,7 @@ const routes = [
     name: "BugDetails",
     props: true,
     component: BugDetails,
+    beforeEnter: authGuard,
   }
 ];
 

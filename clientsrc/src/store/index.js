@@ -27,6 +27,9 @@ export default new Vuex.Store({
     },
     setActiveNotes(state, activeNotes) {
       state.activeNotes = activeNotes
+    },
+    setNotes(state, notes) {
+      state.notes = notes
     }
   },
   actions: {
@@ -41,6 +44,11 @@ export default new Vuex.Store({
         dispatch('getBugs')
       })
     },
+    async addNote({ commit, dispatch }, noteData) {
+      api.post('notes', noteData).then(serverList => {
+        dispatch('getNotes')
+      })
+    },
     async getProfile({ commit }) {
       try {
         let res = await api.get("profile");
@@ -53,6 +61,14 @@ export default new Vuex.Store({
       try {
         let res = await api.get("bugs")
         commit("setBugs", res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async getNotes({ commit }) {
+      try {
+        let res = await api.get("notes")
+        commit("setNotes", res.data)
       } catch (error) {
         console.error(error)
       }
