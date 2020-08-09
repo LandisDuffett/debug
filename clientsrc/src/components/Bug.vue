@@ -5,7 +5,7 @@
     </router-link>
     <profile :profile="profile"></profile>
     {{bug.closed}}
-    {{bug.updatedAt}}
+    {{convertDate}}
   </h3>
 </template>
 
@@ -23,6 +23,14 @@ export default {
   computed: {
     profile() {
       return this.$store.state.profile;
+    },
+    convertDate() {
+      let iso = this.bug.updatedAt;
+      let newDate = iso.substring(0, 10);
+      newDate = newDate.split("-");
+      let newnewDate = [newDate[1], newDate[2], newDate[0]];
+      newnewDate = newnewDate.join("-");
+      return newnewDate;
     },
   },
   methods: {},
