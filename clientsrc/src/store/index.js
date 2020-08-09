@@ -36,6 +36,11 @@ export default new Vuex.Store({
     resetBearer() {
       api.defaults.headers.authorization = "";
     },
+    async addBug({ commit, dispatch }, bugData) {
+      api.post('bugs', bugData).then(serverList => {
+        dispatch('getBugs')
+      })
+    },
     async getProfile({ commit }) {
       try {
         let res = await api.get("profile");

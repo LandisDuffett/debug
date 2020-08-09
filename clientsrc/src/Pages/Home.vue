@@ -98,7 +98,12 @@ export default {
       return this.$store.state.bugs;
     },
   },
-  methods: {},
+  methods: {
+    addBug() {
+      this.$store.dispatch("addBug", this.newBug);
+      $("#bug-modal").modal("hide");
+    },
+  },
   components: {
     Bug,
   },
