@@ -24,7 +24,7 @@ export class BugsController extends BaseController {
             // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
             req.body.creatorEmail = req.userInfo.email;
             let data = await bugsService.create(req.body)
-            return res.send(req.body);
+            return res.send(data);
         } catch (error) {
             next(error);
         }

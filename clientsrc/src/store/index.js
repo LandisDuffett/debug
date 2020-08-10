@@ -41,7 +41,7 @@ export default new Vuex.Store({
     },
     async addBug({ commit, dispatch }, bugData) {
       api.post('bugs', bugData).then(res => {
-        router.push({ name: "BugDetails", params: { bugId: bugData.id } });
+        router.push({ name: "BugDetails", params: { bugId: res.data._id } });
       })
 
     },
