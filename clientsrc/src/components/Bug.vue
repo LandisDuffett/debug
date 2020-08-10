@@ -1,13 +1,24 @@
-<template>
-  <h3>
-    <router-link :to="{name: 'BugDetails', params: {bugId: bug.id}}">
-      <h3>{{bug.title}}</h3>
-    </router-link>
-    <profile :profile="profile"></profile>
-    <h5 :class="colorClass">{{bug.closed}}</h5>
-    {{convertDate}}
-  </h3>
+<template >
+  <div>
+    <div v-if="bug.closed == true">
+      <router-link :to="{name: 'BugDetails', params: {bugId: bug.id}}">
+        <h3>{{bug.title}}</h3>
+      </router-link>
+      <profile :profile="profile"></profile>
+      <h5 class="text-danger">closed</h5>
+      {{convertDate}}
+    </div>
+    <div v-else>
+      <router-link :to="{name: 'BugDetails', params: {bugId: bug.id}}">
+        <h3>{{bug.title}}</h3>
+      </router-link>
+      <profile :profile="profile"></profile>
+      <h5 class="text-secondary">open</h5>
+      {{convertDate}}
+    </div>
+  </div>
 </template>
+
 
 <script>
 import Profile from "../components/Prof.vue";

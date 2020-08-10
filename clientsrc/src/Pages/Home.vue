@@ -73,6 +73,16 @@
       </div>
     </div>
     <div class="home">
+      <tr>
+        <th>Title</th>
+        <th>Reported By</th>
+        <th>
+          Status(sort)
+          <button @click="sortBugs = !sortBugs" class="btn-small btn-primary">sort</button>
+        </th>
+        <th>Last Modified</th>
+      </tr>
+
       <bug v-for="bug in bugs" :bug="bug" :key="bug.id"></bug>
     </div>
     <div class="div">
@@ -88,6 +98,7 @@ export default {
   data() {
     return {
       newBug: {},
+      sortBugs: false,
     };
   },
   mounted() {
@@ -95,7 +106,23 @@ export default {
   },
   computed: {
     bugs() {
-      return this.$store.state.bugs;
+      let bugs = [...this.$store.state.bugs];
+      let displayBugs = [];
+      for (let x = 0; x < bugs.length; x++) {
+        if (bugs[x].closed == true) {
+          bugs[x].closed == 2;
+          displayBugs.push(bugs[x]);
+        } else {
+          bugs[x].closed == 1;
+          displayBugs.push(bugs[x]);
+        }
+      }
+      if (this.sortBugs) {
+        displayBugs = displayBugs.sort((a, b) => a.closed - b.closed);
+        console.log(displayBugs);
+      }
+
+      return displayBugs;
     },
   },
   methods: {
