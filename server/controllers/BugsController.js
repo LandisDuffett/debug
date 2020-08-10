@@ -1,6 +1,7 @@
 import express from "express";
 import BaseController from "../utils/BaseController";
 import { bugsService } from "../services/BugsService";
+import { notesService } from "../services/NotesService"
 import auth0Provider from "@bcwdev/auth0provider";
 
 export class BugsController extends BaseController {
@@ -15,7 +16,6 @@ export class BugsController extends BaseController {
             .get('/:id', this.getById)
             .put('/:id', this.editBug)
             .get('/:id/notes', this.getNotesByBugId)
-            .delete('/:id', this.deleteBug)
         //.delete('/:id', this.deleteNoteById)
     }
 
@@ -32,8 +32,9 @@ export class BugsController extends BaseController {
 
     async deleteBug(req, res, next) {
         try {
-            await bugsService.deleteBug(req.params.id)
-            return res.send("Successfully deleted")
+            req.body.creatorEmail = req.userInfo.email
+            let data = await bugsService.deleteBug(req.body)
+            return res.send(data)
         } catch (error) { next(error) }
     }
     async getBugs(req, res, next) {
@@ -43,6 +44,8 @@ export class BugsController extends BaseController {
         }
         catch (err) { next(err) }
     }
+
+
 
     async getById(req, res, next) {
         try {
@@ -59,6 +62,16 @@ export class BugsController extends BaseController {
             next(error)
         }
     }
+
+    /*async deleteNotesByBugId(req, res, next) {
+        try {
+            req.body.creatorEmail = req.userInfo.email
+            await notesService.deleteNotesByBugId(req.params.id)
+            return res.send("Successfully deleted")
+        } catch (error) {
+            next(error)
+        }
+    }*/
     async editBug(req, res, next) {
         try {
             req.body.creatorEmail = req.userInfo.email

@@ -38,8 +38,8 @@ class BugsService {
         return data;
     }
 
-    async deleteBug(id) {
-        let data = await dbContext.Bugs.findOneAndRemove({ _id: id });
+    async deleteBug(stuff) {
+        let data = await dbContext.Bugs.findOneAndUpdate({ _id: stuff.id }, stuff, { new: true });
         if (!data) {
             throw new BadRequest("Invalid ID or you do not own this list");
         }

@@ -26,6 +26,13 @@ class NotesService {
             throw new BadRequest("Invalid ID or you do not own this list");
         }
     }
+
+    async deleteNotesByBugId(id) {
+        let data = await dbContext.Notes.findOneAndRemove({ _id: id });
+        if (!data) {
+            throw new BadRequest("Invalid ID or you do not own this task");
+        }
+    }
     async getNotes() {
         return await dbContext.Notes.find()
     }

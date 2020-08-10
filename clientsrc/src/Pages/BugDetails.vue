@@ -2,6 +2,7 @@
   <div>
     <h5>Yeah!{{bug.title}}</h5>
     <h5>{{bug.description}}</h5>
+    <h5>{{bug.closed}}</h5>
     <note v-for="note in notes" :note="note" :key="note.id"></note>
     <button
       type="button"
@@ -15,6 +16,9 @@
       data-toggle="modal"
       data-target="#edit-modal"
     >Edit Bug</button>
+    <div>
+      <button @click="deleteBug(bug.id)" class="btn btn-danger">Close Bug</button>
+    </div>
     <!--note-modal begin-->
     <div
       class="modal"
@@ -160,6 +164,13 @@ export default {
     editBug(currentBugId) {
       this.$store.dispatch("editBug", this.bug);
       $("#edit-modal").modal("hide");
+    },
+    deleteBug(bugId) {
+      this.$store.dispatch("editBug", {
+        id: bugId,
+        creatorEmail: this.bug.creatorEmail,
+        closed: true,
+      });
     },
   },
   components: {
