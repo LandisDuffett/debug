@@ -100,7 +100,7 @@
                       name="inputNote"
                       id="inputNote"
                       cols="30"
-                      v-model="bug.description"
+                      v-model.lazy="bug.description"
                       required
                     />
                   </div>

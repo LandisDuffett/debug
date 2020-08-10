@@ -8,10 +8,10 @@ export class ProfilesController extends BaseController {
     super("api/profile");
     this.router
       .use(auth0Provider.getAuthorizedUserInfo)
-      .get("", this.getUserProfile)
+      .get("", this.getProfile)
       .put("/:id", this.edit);
   }
-  async getUserProfile(req, res, next) {
+  async getProfile(req, res, next) {
     try {
       let profile = await profilesService.getProfile(req.userInfo);
       res.send(profile);

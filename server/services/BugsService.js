@@ -20,7 +20,7 @@ class BugsService {
         }
         return value;
     }*/
-    async getAll() {
+    async getBugs() {
         return await dbContext.Bugs.find()
     }
     async getById(id) {
@@ -36,6 +36,13 @@ class BugsService {
             throw new BadRequest("Invalid ID or you do not own this bug.")
         }
         return data;
+    }
+
+    async deleteBug(id) {
+        let data = await dbContext.Bugs.findOneAndRemove({ _id: id });
+        if (!data) {
+            throw new BadRequest("Invalid ID or you do not own this list");
+        }
     }
 
     async editBug(id, userEmail, update) {

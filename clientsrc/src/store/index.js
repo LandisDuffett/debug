@@ -41,12 +41,24 @@ export default new Vuex.Store({
     },
     async addBug({ commit, dispatch }, bugData) {
       api.post('bugs', bugData).then(res => {
-        dispatch('getBugs')
+        router.push({ name: "BugDetails", params: { bugId: bugData.id } });
       })
+
+    },
+    async deleteBug({ commit, dispatch }, payload) {
+      try {
+        api.delete("bugs/" + payload.bugId)
+          .then(serverList => {
+            dispatch('getBugs')
+          })
+      } catch (error) {
+        console.error(error)
+        alert("You can't delete another user's bug report.")
+      }
     },
     async addNote({ commit, dispatch }, noteData) {
       api.post('notes', noteData).then(serverList => {
-        dispatch('getNotes')
+        dispatch('getNotesByBugId', noteData.bugId)
       })
     },
     async getProfile({ commit }) {
@@ -82,10 +94,15 @@ export default new Vuex.Store({
       }
     },
     async editBug({ commit, dispatch }, bugData) {
-      let res = await api.put('bugs/' + bugData.id, bugData).then(res => {
-        dispatch('getBugs')
-      })
-      commit("setBugs")
+      try {
+        let res = await api.put('bugs/' + bugData.id, bugData).then(res => {
+          dispatch('getBugs')
+        })
+        commit("setBugs")
+      } catch (error) {
+        console.error(error)
+        alert("You may not edit another person's bug report.")
+      }
     },
 
     async getNotesByBugId({ commit, dispatch }, id) {

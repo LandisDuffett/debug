@@ -26,7 +26,7 @@ class NotesService {
             throw new BadRequest("Invalid ID or you do not own this list");
         }
     }
-    async getAll() {
+    async getNotes() {
         return await dbContext.Notes.find()
     }
 }

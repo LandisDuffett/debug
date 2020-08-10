@@ -18,6 +18,9 @@
       <h5 class="text-secondary">open</h5>
       {{convertDate}}
     </div>
+    <div>
+      <button @click="deleteBug(bug.id)" class="btn btn-danger">Delete</button>
+    </div>
   </div>
 </template>
 
@@ -53,7 +56,14 @@ export default {
       };
     },
   },
-  methods: {},
+  methods: {
+    deleteBug(bugid) {
+      this.$store.dispatch("deleteBug", {
+        bugId: bugId,
+      });
+      this.$store.dispatch("deleteNotesByBugId", bugId);
+    },
+  },
   components: {
     Profile,
   },

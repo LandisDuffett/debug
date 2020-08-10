@@ -11,10 +11,11 @@ export class BugsController extends BaseController {
             // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
             .use(auth0Provider.getAuthorizedUserInfo)
             .post('', this.create)
-            .get('', this.getAll)
+            .get('', this.getBugs)
             .get('/:id', this.getById)
             .put('/:id', this.editBug)
             .get('/:id/notes', this.getNotesByBugId)
+            .delete('/:id', this.deleteBug)
         //.delete('/:id', this.deleteNoteById)
     }
 
@@ -29,9 +30,15 @@ export class BugsController extends BaseController {
         }
     }
 
-    async getAll(req, res, next) {
+    async deleteBug(req, res, next) {
         try {
-            let data = await bugsService.getAll()
+            await bugsService.deleteBug(req.params.id)
+            return res.send("Successfully deleted")
+        } catch (error) { next(error) }
+    }
+    async getBugs(req, res, next) {
+        try {
+            let data = await bugsService.getBugs()
             return res.send(data)
         }
         catch (err) { next(err) }
@@ -57,7 +64,9 @@ export class BugsController extends BaseController {
             req.body.creatorEmail = req.userInfo.email
             let data = await bugsService.editBug(req.params.id, req.userInfo.email, req.body)
             return res.send(data)
-        } catch (error) { next(error) }
+        } catch (error) {
+            next(error)
+        }
     }
 
 }

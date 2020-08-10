@@ -12,7 +12,7 @@ export class NotesController extends BaseController {
             .use(auth0Provider.getAuthorizedUserInfo)
             .post('', this.create)
             .delete('/:id', this.deleteNoteById)
-            .get('', this.getAll)
+            .get('', this.getNotes)
 
     }
     /*async getAll(req, res, next) {
@@ -42,9 +42,9 @@ export class NotesController extends BaseController {
             next(error)
         }
     }
-    async getAll(req, res, next) {
+    async getNotes(req, res, next) {
         try {
-            let data = await notesService.getAll()
+            let data = await notesService.getNotes()
             return res.send(data)
         }
         catch (err) { next(err) }
