@@ -15,6 +15,7 @@
       class="col-4 mb-3 btn btn-primary btn-lg"
       data-toggle="modal"
       data-target="#edit-modal"
+      v-show="!bug.closed"
     >Edit Bug</button>
     <div>
       <button @click="deleteBug(bug.id)" class="btn btn-danger">Close Bug</button>
