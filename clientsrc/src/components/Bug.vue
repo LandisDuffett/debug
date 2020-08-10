@@ -4,7 +4,8 @@
       <router-link :to="{name: 'BugDetails', params: {bugId: bug.id}}">
         <h3>{{bug.title}}</h3>
       </router-link>
-      <profile :profile="profile"></profile>
+      <!--<profile :profile="profile"></profile>-->
+      <h5>{{bug.creatorEmail}}</h5>
       <h5 class="text-danger">closed</h5>
       {{convertDate}}
     </div>
@@ -12,7 +13,8 @@
       <router-link :to="{name: 'BugDetails', params: {bugId: bug.id}}">
         <h3>{{bug.title}}</h3>
       </router-link>
-      <profile :profile="profile"></profile>
+      <!--<profile :profile="profile"></profile>-->
+      <h5>{{bug.creatorEmail}}</h5>
       <h5 class="text-secondary">open</h5>
       {{convertDate}}
     </div>
