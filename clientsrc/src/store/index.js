@@ -40,7 +40,7 @@ export default new Vuex.Store({
       api.defaults.headers.authorization = "";
     },
     async addBug({ commit, dispatch }, bugData) {
-      api.post('bugs', bugData).then(serverList => {
+      api.post('bugs', bugData).then(res => {
         dispatch('getBugs')
       })
     },
@@ -81,6 +81,13 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async editBug({ commit, dispatch }, bugData) {
+      let res = await api.put('bugs/' + bugData.id, bugData).then(res => {
+        dispatch('getBugs')
+      })
+      commit("setBugs")
+    },
+
     async getNotesByBugId({ commit, dispatch }, id) {
       try {
         let res = await api.get('bugs/' + id + '/notes')
