@@ -2,7 +2,12 @@
   <div>
     <h5>Yeah!{{bug.title}}</h5>
     <h5>{{bug.description}}</h5>
-    <h5>{{bug.closed}}</h5>
+    <div v-if="bug.closed == true">
+      <h5 class="text-danger">closed</h5>
+    </div>
+    <div v-else>
+      <h5 class="text-secondary">open</h5>
+    </div>
     <note v-for="note in notes" :note="note" :key="note.id"></note>
     <button
       type="button"
