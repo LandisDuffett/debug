@@ -29,7 +29,7 @@
             <div class="container-fluid">
               <form @submit.prevent="addBug">
                 <div class="form-group row">
-                  <label for="inputName" class="col-sm-1-12 col-form-label">Bug name</label>
+                  <label for="inputName" class="col-sm-1-12 col-form-label mr-2">Bug name</label>
                   <div class="col-sm-1-12">
                     <input
                       type="text"
@@ -43,7 +43,7 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="inputDesc" class="col-sm-1-12 col-form-label">Description</label>
+                  <label for="inputDesc" class="col-sm-1-12 col-form-label mr-2">Description</label>
                   <div class="col-sm-1-12">
                     <textarea
                       type="text"

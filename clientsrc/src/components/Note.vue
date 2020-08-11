@@ -1,11 +1,17 @@
 <template>
-  <tr class="Note">
-    <td>{{note.creatorEmail}}</td>
-    <td>{{note.content}}</td>
-    <td>
-      <button @click="deleteNote(note.id)" class="btn btn-danger">Delete</button>
-    </td>
-  </tr>
+  <div class="col">
+    <div class="row">
+      <div class="col-4 border-right border-success p-1">
+        <h5>{{note.creatorEmail}}</h5>
+      </div>
+      <div class="col-4 border-right border-success p-1">
+        <h5>{{note.content}}</h5>
+      </div>
+      <div class="col-4 border-right border-success p-1">
+        <button @click="deleteNote(note.id)" class="btn btn-danger btn-small">Delete</button>
+      </div>
+    </div>
+  </div>
 </template>
 
 
