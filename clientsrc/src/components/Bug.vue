@@ -1,22 +1,21 @@
 <template >
-  <div>
-    <div v-if="bug.closed == true">
+  <div class="row border-bottom border-right border-left border-success bg-white text-black">
+    <div class="col-3 border-right border-success">
       <router-link :to="{name: 'BugDetails', params: {bugId: bug.id}}">
-        <h3>{{bug.title}}</h3>
+        <h5 class="pl-2">{{bug.title}}</h5>
       </router-link>
-      <!--<profile :profile="profile"></profile>-->
-      <h5>{{bug.creatorEmail}}</h5>
-      <h5 class="text-danger">closed</h5>
-      {{convertDate}}
     </div>
-    <div v-else>
-      <router-link :to="{name: 'BugDetails', params: {bugId: bug.id}}">
-        <h3>{{bug.title}}</h3>
-      </router-link>
-      <!--<profile :profile="profile"></profile>-->
+    <div class="col-3 border-right border-success">
       <h5>{{bug.creatorEmail}}</h5>
-      <h5 class="text-secondary">open</h5>
-      {{convertDate}}
+    </div>
+    <div class="col-3 border-right border-success" v-if="bug.closed == true">
+      <h5 class="text-danger">closed</h5>
+    </div>
+    <div class="col-3 border-right border-success" v-else>
+      <h5 class="text-success">open</h5>
+    </div>
+    <div class="col-3 border-right border-success">
+      <h5>{{convertDate}}</h5>
     </div>
   </div>
 </template>

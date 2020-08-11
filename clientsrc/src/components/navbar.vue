@@ -1,6 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" :to="{ name: 'Home' }">AppName</router-link>
+    <img alt="Vue logo" src="../assets/logo.png" style="width: 25px;" />
+    <router-link class="navbar-brand" :to="{ name: 'Home' }">bugger</router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -23,13 +24,6 @@
           :class="{ active: $route.name == 'Profile' }"
         >
           <router-link class="nav-link" :to="{ name: 'Profile' }">Profile</router-link>
-        </li>
-        <li
-          class="nav-item"
-          v-if="$auth.isAuthenticated"
-          :class="{ active: $route.name == 'BugDetails' }"
-        >
-          <router-link class="nav-link" :to="{ name: 'BugDetails' }">BugDetails</router-link>
         </li>
       </ul>
       <span class="navbar-text">

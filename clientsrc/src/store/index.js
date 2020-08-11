@@ -112,6 +112,17 @@ export default new Vuex.Store({
         })
     },
 
+    deleteNote({ commit, dispatch }, noteData) {
+      try {
+        api.delete('notes/' + noteData.id).then(serverList => {
+          dispatch('getNotesByBugId', noteData.bugId)
+        })
+      } catch (error) {
+        console.error(error)
+        alert("You may not delete another person's note.")
+      }
+    },
+
     async getNotesByBugId({ commit, dispatch }, id) {
       try {
         let res = await api.get('bugs/' + id + '/notes')

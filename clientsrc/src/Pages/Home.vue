@@ -1,15 +1,13 @@
 <template>
   <div>
-    <div class="row">
-      <img alt="Vue logo" class="image-fluid" src="../assets/logo.png" />
-      <h1>bugger</h1>
+    <div class="row justify-content-center">
+      <button
+        type="button"
+        class="col-4 mb-3 btn btn-danger text-white btn-small m-1 mt-2"
+        data-toggle="modal"
+        data-target="#bug-modal"
+      >Report Bug</button>
     </div>
-    <button
-      type="button"
-      class="col-4 mb-3 btn btn-primary btn-lg"
-      data-toggle="modal"
-      data-target="#bug-modal"
-    >Report</button>
     <!--Modal-->
     <div
       class="modal"
@@ -72,27 +70,31 @@
         </div>
       </div>
     </div>
-    <div class="home">
-      <tr>
-        <th>Title</th>
-        <th>Reported By</th>
-        <th>
-          Status(sort)
-          <button @click="sortBugs = !sortBugs" class="btn-small btn-primary">sort</button>
-        </th>
-        <th>Last Modified</th>
-      </tr>
-
-      <bug v-for="bug in bugs" :bug="bug" :key="bug.id"></bug>
-    </div>
-    <div class="div">
-      <router-link :to="{name: 'BugDetails'}">BugDetails</router-link>
+    <div class="home container-fluid">
+      <div class="col-12">
+        <div class="row border border-success text-info align-items-center bg-secondary">
+          <div
+            class="col-3 border-right border-success pl-4 bg-secondary text-danger"
+          >Title (click for details)</div>
+          <div class="col-3 border-right border-success bg-secondary text-danger">Reported By</div>
+          <div class="col-3 border-right border-success bg-secondary text-danger">
+            Status
+            <button
+              @click="sortBugs = !sortBugs"
+              class="btn-small btn-info text-white m-1"
+            >sort</button>
+          </div>
+          <div class="col-3 bg-secondary text-danger">Last Modified</div>
+        </div>
+        <bug v-for="bug in bugs" :bug="bug" :key="bug.id"></bug>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Bug from "../components/Bug";
+import Profile from "../components/Prof";
 export default {
   name: "home",
   data() {
@@ -103,8 +105,12 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getBugs");
+    this.$store.dispatch("getProfile");
   },
   computed: {
+    profile() {
+      return this.$store.state.Profile;
+    },
     bugs() {
       let bugs = [...this.$store.state.bugs];
       let displayBugs = [];

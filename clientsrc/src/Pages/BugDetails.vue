@@ -171,7 +171,9 @@ export default {
       this.$store.dispatch("editBug", this.bug);
       $("#edit-modal").modal("hide");
     },
+
     deleteBug(bugId) {
+      confirm("Are you sure you want to close this bug report?");
       this.$store.dispatch("editBug", {
         id: bugId,
         creatorEmail: this.bug.creatorEmail,
