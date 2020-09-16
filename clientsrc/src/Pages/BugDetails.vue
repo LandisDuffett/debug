@@ -45,7 +45,11 @@
         v-show="!bug.closed"
       >Edit Bug</button>
       <div>
-        <button @click="deleteBug(bug.id)" class="btn btn-danger btn-sm mr-3 border">Close Bug</button>
+        <button
+          @click="deleteBug(bug.id)"
+          v-show="!bug.closed"
+          class="btn btn-danger btn-sm mr-3 border"
+        >Close Bug</button>
       </div>
     </div>
     <div class="col-12">
