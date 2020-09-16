@@ -66,6 +66,13 @@
         data-target="#note-modal"
       >Add Note</button>
     </div>
+    <div>
+      <button
+        type="button"
+        class="col-4 m-3 btn btn-primary btn-sm"
+        @click="$router.push({name: 'Home'})"
+      >See all bugs</button>
+    </div>
     <!--note-modal begin-->
     <div
       class="modal"
@@ -176,6 +183,7 @@
 
 <script>
 import Note from "../components/Note";
+import router from "../router";
 export default {
   name: "BugDetails",
   props: ["bugId"],

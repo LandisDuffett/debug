@@ -45,6 +45,10 @@ class BugsService {
         }
     }
 
+    async delete() {
+        let data = await dbContext.Bugs.deleteMany({});
+    }
+
     async editBug(id, userEmail, update) {
         let data = await dbContext.Bugs.findOneAndUpdate({ _id: id, creatorEmail: userEmail }, update, { new: true })
         if (!data) {
