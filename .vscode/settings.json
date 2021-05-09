@@ -1,0 +1,51 @@
+{
+  "editor.renderWhitespace": "all",
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.matchBrackets": true,
+  "javascript.preferences.quoteStyle": "double",
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "javascript.implicitProjectConfig.checkJs": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.referencesCodeLens.enabled": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "search.useGlobalIgnoreFiles": true,
+  "emmet.includeLanguages": {
+    "vue": "html",
+    "javascript": "javascriptreact"
+  },
+  "vsicons.dontShowNewVersionMessage": true,
+  "workbench.iconTheme": "vscode-icons",
+  "editor.showFoldingControls": "always",
+  "editor.renderIndentGuides": true,
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/*.meta": true,
+    "**/node_modules": true,
+    "**/dist": true
+  },
+  "window.zoomLevel": 1,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "explorer.confirmDragAndDrop": false,
+  "[json]": {
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace"
+  },
+  "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+  "workbench.colorTheme": "Visual Studio 2019 Dark",
+  "debug.onTaskErrors": "debugAnyway",
+  "php.validate.executablePath": "C:\\xampp\\php\\windowsXamppPhp\\php.exe",
+}
