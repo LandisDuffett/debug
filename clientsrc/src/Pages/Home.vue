@@ -7,7 +7,7 @@
         data-toggle="modal"
         data-target="#bug-modal"
       >
-        Report Hug
+        Report Bug
       </button>
     </div>
     <!--Modal-->
