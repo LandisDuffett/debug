@@ -6,7 +6,9 @@
         class="col-4 mb-3 btn btn-danger text-white btn-small m-1 mt-2"
         data-toggle="modal"
         data-target="#bug-modal"
-      >Report Bug</button>
+      >
+        Report Hug
+      </button>
     </div>
     <!--Modal-->
     <div
@@ -21,7 +23,12 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Report Bug</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -29,7 +36,9 @@
             <div class="container-fluid">
               <form @submit.prevent="addBug">
                 <div class="form-group row">
-                  <label for="inputName" class="col-sm-1-12 col-form-label mr-2">Bug name</label>
+                  <label for="inputName" class="col-sm-1-12 col-form-label mr-2"
+                    >Bug name</label
+                  >
                   <div class="col-sm-1-12">
                     <input
                       type="text"
@@ -43,7 +52,9 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="inputDesc" class="col-sm-1-12 col-form-label mr-2">Description</label>
+                  <label for="inputDesc" class="col-sm-1-12 col-form-label mr-2"
+                    >Description</label
+                  >
                   <div class="col-sm-1-12">
                     <textarea
                       type="text"
@@ -58,31 +69,51 @@
                 </div>
                 <div class="form-group row">
                   <div class="offset-sm-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">
+                      Submit
+                    </button>
                   </div>
                 </div>
               </form>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
           </div>
         </div>
       </div>
     </div>
     <div class="home container-fluid">
       <div class="col-12">
-        <div class="row border border-success text-info align-items-center bg-secondary">
+        <div
+          class="row border border-success text-info align-items-center bg-secondary"
+        >
           <div
             class="col-3 border-right border-success pl-4 bg-secondary text-danger"
-          >Title (click for details)</div>
-          <div class="col-3 border-right border-success bg-secondary text-danger">Reported By</div>
-          <div class="col-3 border-right border-success bg-secondary text-danger">
+          >
+            Title (click for details)
+          </div>
+          <div
+            class="col-3 border-right border-success bg-secondary text-danger"
+          >
+            Reported By
+          </div>
+          <div
+            class="col-3 border-right border-success bg-secondary text-danger"
+          >
             Status
             <button
               @click="sortBugs = !sortBugs"
               class="btn-small btn-info text-white m-1"
-            >sort</button>
+            >
+              sort
+            </button>
           </div>
           <div class="col-3 bg-secondary text-danger">Last Modified</div>
         </div>
