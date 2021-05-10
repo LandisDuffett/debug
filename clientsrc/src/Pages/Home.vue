@@ -143,7 +143,7 @@ export default {
       return this.$store.state.Profile;
     },
     bugs() {
-      let bugs = this.$store.state.bugs;
+      let bugs = [...this.$store.state.bugs];
       let displayBugs = [];
       for (let x = 0; x < bugs.length; x++) {
         if (bugs[x].closed == true) {
