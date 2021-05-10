@@ -49,8 +49,8 @@ class BugsService {
         let data = await dbContext.Bugs.deleteMany({});
     }
 
-    async editBug(id, userEmail, update) {
-        let data = await dbContext.Bugs.findOneAndUpdate({ _id: id, creatorEmail: userEmail, closed: false }, update, { new: true })
+    async editBug(id, dat) {
+        let data = await dbContext.Bugs.findOneAndUpdate({ _id: id, closed: false }, dat, { new: true })
         if (!data) {
             throw new BadRequest("Invalid ID or you do not own this bug.")
         }

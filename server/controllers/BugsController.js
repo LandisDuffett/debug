@@ -82,7 +82,7 @@ export class BugsController extends BaseController {
     async editBug(req, res, next) {
         try {
             req.body.creatorEmail = req.userInfo.email
-            let data = await bugsService.editBug(req.params.id, req.userInfo.email, req.body)
+            let data = await bugsService.editBug(req.params.id, req.body)
             return res.send(data)
         } catch (error) {
             next(error)

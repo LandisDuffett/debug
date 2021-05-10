@@ -143,7 +143,7 @@ export default {
       return this.$store.state.Profile;
     },
     bugs() {
-      let bugs = [...this.$store.state.bugs];
+      let bugs = this.$store.state.bugs;
       let displayBugs = [];
       for (let x = 0; x < bugs.length; x++) {
         if (bugs[x].closed == true) {
@@ -164,11 +164,7 @@ export default {
   },
   methods: {
     addBug() {
-      this.$store.dispatch("addBug", {
-        title: this.newBug.title,
-        description: this.newBug.description,
-        creatorEmail: profile.email,
-      });
+      this.$store.dispatch("addBug", this.newBug);
       $("#bug-modal").modal("hide");
     },
   },
