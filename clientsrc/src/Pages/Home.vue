@@ -164,7 +164,11 @@ export default {
   },
   methods: {
     addBug() {
-      this.$store.dispatch("addBug", this.newBug);
+      this.$store.dispatch("addBug", {
+        title: this.newBug.title,
+        description: this.newBug.description,
+        creatorEmail: profile.email,
+      });
       $("#bug-modal").modal("hide");
     },
   },
