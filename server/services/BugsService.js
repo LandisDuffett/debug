@@ -38,19 +38,23 @@ class BugsService {
         return data;
     }
 
-    async deleteBug(stuff) {
-        let data = await dbContext.Bugs.findOneAndUpdate({ _id: stuff.id }, stuff, { new: true });
+    async deleteBug(id, userEmail) {
+        let data = await dbContext.Bugs.findOneAndRemove({ _id: id, creatorEmail: userEmail });
         if (!data) {
             throw new BadRequest("Invalid ID or you do not own this list");
         }
     }
 
-    async delete() {
-        let data = await dbContext.Bugs.deleteMany({});
+    async deleteAll() {
+        let data = await dbContext.Bugs.deleteMany();
+        /*if (!data) {
+            throw new BadRequest("Invalid userEmail or you do not own this object");
+        }*/
+        return data;
     }
 
-    async editBug(id, dat) {
-        let data = await dbContext.Bugs.findOneAndUpdate({ _id: id, closed: false }, dat, { new: true })
+    async editBug(id, userEmail, update) {
+        let data = await dbContext.Bugs.findOneAndUpdate({ _id: id, creatorEmail: userEmail }, update, { new: true })
         if (!data) {
             throw new BadRequest("Invalid ID or you do not own this bug.")
         }

@@ -16,7 +16,8 @@ export class BugsController extends BaseController {
             .get('/:id', this.getById)
             .put('/:id', this.editBug)
             .get('/:id/notes', this.getNotesByBugId)
-            .delete('', this.delete)
+            .delete('/:id', this.deleteBug)
+            .delete('', this.deleteAll)
     }
 
     async create(req, res, next) {
@@ -30,18 +31,10 @@ export class BugsController extends BaseController {
         }
     }
 
-    async delete(req, res, next) {
-        try {
-            let data = await bugsService.delete()
-            return res.send(data)
-        } catch (error) { next(error) }
-    }
-
     async deleteBug(req, res, next) {
         try {
-            req.body.creatorEmail = req.userInfo.email
-            let data = await bugsService.deleteBug(req.body)
-            return res.send(data)
+            let bug = await bugsService.deleteBug(req.params.id, req.userInfo.email);
+            res.send(req.body);
         } catch (error) { next(error) }
     }
     async getBugs(req, res, next) {
@@ -52,7 +45,14 @@ export class BugsController extends BaseController {
         catch (err) { next(err) }
     }
 
-
+    async deleteAll(req, res, next) {
+        try {
+            await bugsService.deleteAll();
+            return res.send(req.body);
+        } catch (error) {
+            next(error);
+        }
+    }
 
     async getById(req, res, next) {
         try {
@@ -82,7 +82,7 @@ export class BugsController extends BaseController {
     async editBug(req, res, next) {
         try {
             req.body.creatorEmail = req.userInfo.email
-            let data = await bugsService.editBug(req.params.id, req.body)
+            let data = await bugsService.editBug(req.params.id, req.userInfo.email, req.body)
             return res.send(data)
         } catch (error) {
             next(error)

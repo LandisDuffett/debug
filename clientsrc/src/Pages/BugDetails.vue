@@ -1,21 +1,26 @@
 <template>
   <div class="home container-fluid bg-info vh-100">
     <div class="row justify-content-center p-2">
-      <h3 class="text-center bg-primary border border-rounded p-2" style="width: 50%">BUG DETAILS</h3>
+      <h3
+        class="text-center bg-primary border border-rounded p-2"
+        style="width: 50%"
+      >
+        BUG DETAILS
+      </h3>
     </div>
     <div class="row justify-content-center">
       <h5>
         <strong>
-          <u>Bug title: {{bug.title}}</u>
+          <u>Bug title: {{ bug.title }}</u>
         </strong>
       </h5>
     </div>
     <div class="row">
       <h1 class="pl-2"></h1>
     </div>
-    <div class="row" style="justify-content: space-between;">
+    <div class="row" style="justify-content: space-between">
       <span class="ml-2">
-        <h5>Reported by: {{bug.creatorEmail}}</h5>
+        <h5>Reported by: {{ bug.creatorEmail }}</h5>
       </span>
     </div>
     <div class="row pl-2">
@@ -32,7 +37,7 @@
     <div class="container-fluid">
       <div class="row border border-success text-info bg-light mb-3">
         <div class="col-12">
-          <p class="text-dark">{{bug.description}}</p>
+          <p class="text-dark">{{ bug.description }}</p>
         </div>
       </div>
     </div>
@@ -43,20 +48,37 @@
         data-toggle="modal"
         data-target="#edit-modal"
         v-show="!bug.closed"
-      >Edit Bug</button>
+      >
+        Edit Bug
+      </button>
       <div>
         <button
           @click="deleteBug(bug.id)"
-          v-show="!bug.closed"
           class="btn btn-danger btn-sm mr-3 border"
-        >Close Bug</button>
+        >
+          Close Bug
+        </button>
       </div>
     </div>
     <div class="col-12">
-      <div class="row border border-success text-info align-items-center bg-secondary">
-        <div class="col-4 border-right border-success bg-secondary text-danger p-1">User</div>
-        <div class="col-4 border-right border-success bg-secondary text-danger p-1">Comment</div>
-        <div class="col-4 border-right border-success bg-secondary text-danger p-1">Delete Comment</div>
+      <div
+        class="row border border-success text-info align-items-center bg-secondary"
+      >
+        <div
+          class="col-4 border-right border-success bg-secondary text-danger p-1"
+        >
+          User
+        </div>
+        <div
+          class="col-4 border-right border-success bg-secondary text-danger p-1"
+        >
+          Comment
+        </div>
+        <div
+          class="col-4 border-right border-success bg-secondary text-danger p-1"
+        >
+          Delete Comment
+        </div>
       </div>
       <div class="row bg-light">
         <note v-for="note in notes" :note="note" :key="note.id"></note>
@@ -68,14 +90,9 @@
         class="col-4 m-3 btn btn-primary btn-sm"
         data-toggle="modal"
         data-target="#note-modal"
-      >Add Note</button>
-    </div>
-    <div>
-      <button
-        type="button"
-        class="col-4 m-3 btn btn-primary btn-sm"
-        @click="$router.push({name: 'Home'})"
-      >See all bugs</button>
+      >
+        Add Note
+      </button>
     </div>
     <!--note-modal begin-->
     <div
@@ -90,7 +107,12 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Add Note</h5>
-            <button type="button" class="close btn-small" data-dismiss="modal" aria-label="Close">
+            <button
+              type="button"
+              class="close btn-small"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -98,10 +120,9 @@
             <div class="container-fluid">
               <form @submit.prevent="addNote(bug.id)">
                 <div class="form-group row">
-                  <label
-                    for="inputName"
-                    class="col-sm-1-12 col-form-label"
-                  >Reported by: {{bug.creatorEmail}}</label>
+                  <label for="inputName" class="col-sm-1-12 col-form-label"
+                    >Reported by: {{ bug.creatorEmail }}</label
+                  >
                   <div class="col-sm-1-12 ml-2">
                     <textarea
                       type="text"
@@ -117,14 +138,22 @@
                 </div>
                 <div class="form-group row">
                   <div class="offset-sm-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary btn-small">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-small">
+                      Submit
+                    </button>
                   </div>
                 </div>
               </form>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary btn-small" data-dismiss="modal">Close</button>
+            <button
+              type="button"
+              class="btn btn-secondary btn-small"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
           </div>
         </div>
       </div>
@@ -143,7 +172,12 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Edit Bug</h5>
-            <button type="button" class="close btn-small" data-dismiss="modal" aria-label="Close">
+            <button
+              type="button"
+              class="close btn-small"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -151,10 +185,9 @@
             <div class="container-fluid">
               <form @submit.prevent="editBug(bug.id)">
                 <div class="form-group row">
-                  <label
-                    for="inputName"
-                    class="col-sm-1-12 col-form-label"
-                  >Reported by: {{bug.creatorEmail}}</label>
+                  <label for="inputName" class="col-sm-1-12 col-form-label"
+                    >Reported by: {{ bug.creatorEmail }}</label
+                  >
                   <div class="col-sm-1-12 ml-2">
                     <textarea
                       type="text"
@@ -169,14 +202,22 @@
                 </div>
                 <div class="form-group row">
                   <div class="offset-sm-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary btn-small">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-small">
+                      Submit
+                    </button>
                   </div>
                 </div>
               </form>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary btn-small" data-dismiss="modal">Close</button>
+            <button
+              type="button"
+              class="btn btn-secondary btn-small"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
           </div>
         </div>
       </div>
@@ -187,7 +228,6 @@
 
 <script>
 import Note from "../components/Note";
-import router from "../router";
 export default {
   name: "BugDetails",
   props: ["bugId"],

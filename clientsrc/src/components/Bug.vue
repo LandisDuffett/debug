@@ -1,12 +1,16 @@
 <template >
-  <div class="row border-bottom border-right border-left border-success bg-white text-black">
+  <div
+    class="row border-bottom border-right border-left border-success bg-white text-black"
+  >
     <div class="col-3 border-right border-success">
-      <router-link :to="{name: 'BugDetails', params: {bugId: bug.id}}">
-        <h5 class="pl-2">{{bug.title}}</h5>
+      <router-link :to="{ name: 'BugDetails', params: { bugId: bug.id } }">
+        <h5 class="pl-2">{{ bug.title }}</h5>
       </router-link>
     </div>
     <div class="col-3 border-right border-success">
-      <h5>{{bug.creatorEmail}}</h5>
+      <router-link :to="{ name: 'BugDetails', params: { bugId: bug.id } }">
+        <h5 class="pl-2">{{ bug.creatorEmail }}</h5>
+      </router-link>
     </div>
     <div class="col-3 border-right border-success" v-if="bug.closed == true">
       <h5 class="text-danger">closed</h5>
@@ -15,7 +19,7 @@
       <h5 class="text-success">open</h5>
     </div>
     <div class="col-3 border-right border-success">
-      <h5>{{convertDate}}</h5>
+      <h5>{{ convertDate }}</h5>
     </div>
   </div>
 </template>
