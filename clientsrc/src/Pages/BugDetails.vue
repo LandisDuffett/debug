@@ -260,7 +260,7 @@ export default {
       });
       $("#note-modal").modal("hide");
     },
-    editBug(currentBugId) {
+    editBug() {
       this.$store.dispatch("editBug", this.bug);
       $("#edit-modal").modal("hide");
     },

@@ -117,7 +117,7 @@
           </div>
           <div class="col-3 bg-secondary text-danger">Last Modified</div>
         </div>
-        <bug v-for="bug in displayBugs" :bug="bug" :key="bug.id"></bug>
+        <bug v-for="bug in bugs" :bug="bug" :key="bug.id"></bug>
       </div>
     </div>
   </div>
@@ -143,10 +143,7 @@ export default {
       return this.$store.state.Profile;
     },
     bugs() {
-      return this.$store.state.bugs;
-    },
-    displayBugs() {
-      let bugs = this.bugs;
+      let bugs = this.$store.state.bugs;
       let displayBugs = [];
       for (let x = 0; x < bugs.length; x++) {
         if (bugs[x].closed == true) {
@@ -161,7 +158,6 @@ export default {
         displayBugs = displayBugs.sort((a, b) => a.closed - b.closed);
         console.log(displayBugs);
       }
-      console.log(displayBugs);
 
       return displayBugs;
     },

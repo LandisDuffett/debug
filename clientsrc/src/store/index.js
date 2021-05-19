@@ -98,7 +98,7 @@ export default new Vuex.Store({
         let res = await api.put('bugs/' + bugData.id, bugData).then(res => {
           dispatch('getById', bugData.id)
         })
-        commit("setBugs")
+        //commit("setBugs")
       } catch (error) {
         console.error(error)
         alert("You may not edit another person's bug report.")
